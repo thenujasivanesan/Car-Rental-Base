@@ -42,5 +42,29 @@ namespace CarRentalSystem.Controllers
 
             return View(recentBookings);
         }
+
+        public async Task<IActionResult> Profile()
+        {
+            var authResult = RequireCustomer();
+            if (authResult != null) return authResult;
+
+            var customerId = CurrentUserId!.Value;
+            var user = await _context.Users.FindAsync(customerId);
+
+            if (user == null) return NotFound();
+
+            // Get customer statistics for the profile page
+            var totalBookings = await _context.Bookings.CountAsync(b => b.CustomerID == customerId);
+            var totalSpent = await _context.Bookings
+                .Where(b => b.CustomerID == customerId)
+                .SumAsync(b => (decimal?)b.TotalCost) ?? 0;
+            var availableCars = await _context.Cars.CountAsync(c => c.IsAvailable);
+
+            ViewBag.TotalBookings = totalBookings;
+            ViewBag.TotalSpent = totalSpent;
+            ViewBag.AvailableCars = availableCars;
+
+            return View(user);
+        }
     }
 }

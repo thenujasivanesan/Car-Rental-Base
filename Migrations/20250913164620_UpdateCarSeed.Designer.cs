@@ -4,6 +4,7 @@ using CarRentalSystem.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CarRentalSystem.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250913164620_UpdateCarSeed")]
+    partial class UpdateCarSeed
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -105,7 +108,7 @@ namespace CarRentalSystem.Migrations
                             Brand = "Toyota",
                             CarModel = "2023",
                             CarName = "Camry",
-                            ImageUrl = "https://stimg.cardekho.com/images/carexteriorimages/930x620/Toyota/Camry/11344/1733916451269/front-left-side-47.jpg?imwidth=890&impolicy=resize",
+                            ImageUrl = "https://global.toyota/pages/models/images/20191018/kv/camry_w1920_01.jpg",
                             IsAvailable = true,
                             Seats = 5
                         },
@@ -115,7 +118,7 @@ namespace CarRentalSystem.Migrations
                             Brand = "Honda",
                             CarModel = "2023",
                             CarName = "Civic",
-                            ImageUrl = "https://media.ed.edmunds-media.com/honda/civic/2026/oem/2026_honda_civic_sedan_si_fq_oem_1_815.jpg",
+                            ImageUrl = "https://via.placeholder.com/300x200?text=Honda+Civic",
                             IsAvailable = true,
                             Seats = 5
                         },
@@ -125,7 +128,7 @@ namespace CarRentalSystem.Migrations
                             Brand = "BMW",
                             CarModel = "2023",
                             CarName = "X5",
-                            ImageUrl = "https://www.topgear.com/sites/default/files/2024/05/P90489757_highRes_the-new-bmw-x5-xdriv_0.jpg?w=1784&h=1004",
+                            ImageUrl = "https://via.placeholder.com/300x200?text=BMW+X5",
                             IsAvailable = false,
                             Seats = 7
                         });

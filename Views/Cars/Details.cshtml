@@ -40,13 +40,21 @@
                 <dl class="row">
                     <dt class="col-sm-4">Car ID:</dt>
                     <dd class="col-sm-8">#@Model.CarID</dd>
-                    
+
                     <dt class="col-sm-4">Car Name:</dt>
                     <dd class="col-sm-8">@Model.CarName</dd>
-                    
-                    <dt class="col-sm-4">Model:</dt>
+
+                    <dt class="col-sm-4">Brand:</dt>
+                    <dd class="col-sm-8">@Model.Brand</dd>
+
+                    <dt class="col-sm-4">Model Year:</dt>
                     <dd class="col-sm-8">@Model.CarModel</dd>
-                    
+
+                    <dt class="col-sm-4">Seats:</dt>
+                    <dd class="col-sm-8">
+                        <i class="bi bi-people"></i> @Model.Seats passengers
+                    </dd>
+
                     <dt class="col-sm-4">Status:</dt>
                     <dd class="col-sm-8">
                         <span class="badge @(Model.IsAvailable ? "bg-success" : "bg-danger") fs-6">

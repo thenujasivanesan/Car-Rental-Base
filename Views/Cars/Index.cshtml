@@ -28,7 +28,9 @@
                         <tr>
                             <th>Image</th>
                             <th>Car Name</th>
-                            <th>Model</th>
+                            <th>Brand</th>
+                            <th>Model Year</th>
+                            <th>Seats</th>
                             <th>Status</th>
                             <th>Actions</th>
                         </tr>
@@ -40,15 +42,18 @@
                                 <td>
                                     @if (!string.IsNullOrEmpty(car.ImageUrl))
                                     {
-                                        <img src="@car.ImageUrl" alt="@car.CarName" class="img-thumbnail" style="width: 80px; height: 60px; object-fit: cover;">
+                                        <img src="@car.ImageUrl" alt="@car.CarName" class="img-thumbnail"
+                                            style="width: 80px; height: 60px; object-fit: cover;">
                                     }
                                     else if (!string.IsNullOrEmpty(car.ImagePath))
                                     {
-                                        <img src="@Url.Content("~/uploads/" + car.ImagePath)" alt="@car.CarName" class="img-thumbnail" style="width: 80px; height: 60px; object-fit: cover;">
+                                        <img src="@Url.Content("~/uploads/" + car.ImagePath)" alt="@car.CarName"
+                                            class="img-thumbnail" style="width: 80px; height: 60px; object-fit: cover;">
                                     }
                                     else
                                     {
-                                        <div class="bg-light d-flex align-items-center justify-content-center img-thumbnail" style="width: 80px; height: 60px;">
+                                        <div class="bg-light d-flex align-items-center justify-content-center img-thumbnail"
+                                            style="width: 80px; height: 60px;">
                                             <i class="bi bi-car-front text-muted"></i>
                                         </div>
                                     }
@@ -56,7 +61,11 @@
                                 <td>
                                     <strong>@car.CarName</strong>
                                 </td>
+                                <td>@car.Brand</td>
                                 <td>@car.CarModel</td>
+                                <td>
+                                    <i class="bi bi-people"></i> @car.Seats
+                                </td>
                                 <td>
                                     <span class="badge @(car.IsAvailable ? "bg-success" : "bg-danger")">
                                         @(car.IsAvailable ? "Available" : "Booked")
@@ -64,13 +73,16 @@
                                 </td>
                                 <td>
                                     <div class="btn-group" role="group">
-                                        <a href="@Url.Action("Details", new { id = car.CarID })" class="btn btn-outline-info btn-sm" title="View Details">
+                                        <a href="@Url.Action("Details", new { id = car.CarID })"
+                                            class="btn btn-outline-info btn-sm" title="View Details">
                                             <i class="bi bi-eye"></i>
                                         </a>
-                                        <a href="@Url.Action("Edit", new { id = car.CarID })" class="btn btn-outline-warning btn-sm" title="Edit">
+                                        <a href="@Url.Action("Edit", new { id = car.CarID })"
+                                            class="btn btn-outline-warning btn-sm" title="Edit">
                                             <i class="bi bi-pencil"></i>
                                         </a>
-                                        <a href="@Url.Action("Delete", new { id = car.CarID })" class="btn btn-outline-danger btn-sm" title="Delete">
+                                        <a href="@Url.Action("Delete", new { id = car.CarID })"
+                                            class="btn btn-outline-danger btn-sm" title="Delete">
                                             <i class="bi bi-trash"></i>
                                         </a>
                                     </div>

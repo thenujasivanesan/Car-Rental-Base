@@ -79,8 +79,23 @@ namespace CarRentalSystem.Controllers
                     return View(model);
                 }
 
+                // Check if email already exists
+                var existingEmail = await _context.Users
+                    .FirstOrDefaultAsync(u => u.Email == model.Email);
+
+                if (existingEmail != null)
+                {
+                    ModelState.AddModelError("Email", "Email already exists");
+                    return View(model);
+                }
+
                 var user = new User
                 {
+                    FullName = model.FullName,
+                    Email = model.Email,
+                    PhoneNumber = model.PhoneNumber,
+                    Address = model.Address,
+                    NICNumber = model.NICNumber,
                     Username = model.Username,
                     Password = model.Password,
                     Role = "Customer"

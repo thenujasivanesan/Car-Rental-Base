@@ -69,7 +69,9 @@ namespace CarRentalSystem.Controllers
                 var car = new Car
                 {
                     CarName = model.CarName,
+                    Brand = model.Brand,
                     CarModel = model.CarModel,
+                    Seats = model.Seats,
                     ImageUrl = model.ImageUrl,
                     IsAvailable = model.IsAvailable
                 };
@@ -117,7 +119,9 @@ namespace CarRentalSystem.Controllers
             {
                 CarID = car.CarID,
                 CarName = car.CarName,
+                Brand = car.Brand,
                 CarModel = car.CarModel,
+                Seats = car.Seats,
                 ImageUrl = car.ImageUrl,
                 IsAvailable = car.IsAvailable,
                 ExistingImagePath = car.ImagePath
@@ -150,7 +154,9 @@ namespace CarRentalSystem.Controllers
                     if (car == null) return NotFound();
 
                     car.CarName = model.CarName;
+                    car.Brand = model.Brand;
                     car.CarModel = model.CarModel;
+                    car.Seats = model.Seats;
                     car.IsAvailable = model.IsAvailable;
 
                     // Handle image update
