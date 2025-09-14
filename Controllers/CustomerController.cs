@@ -26,11 +26,8 @@ namespace CarRentalSystem.Controllers
                 .Where(b => b.CustomerID == customerId)
                 .SumAsync(b => (decimal?)b.TotalCost) ?? 0;
 
-            var availableCars = await _context.Cars.CountAsync(c => c.IsAvailable);
-
             ViewBag.TotalBookings = totalBookings;
             ViewBag.TotalSpent = totalSpent;
-            ViewBag.AvailableCars = availableCars;
 
             // Recent bookings
             var recentBookings = await _context.Bookings
@@ -58,11 +55,9 @@ namespace CarRentalSystem.Controllers
             var totalSpent = await _context.Bookings
                 .Where(b => b.CustomerID == customerId)
                 .SumAsync(b => (decimal?)b.TotalCost) ?? 0;
-            var availableCars = await _context.Cars.CountAsync(c => c.IsAvailable);
 
             ViewBag.TotalBookings = totalBookings;
             ViewBag.TotalSpent = totalSpent;
-            ViewBag.AvailableCars = availableCars;
 
             return View(user);
         }
